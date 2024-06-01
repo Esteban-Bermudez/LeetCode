@@ -5,18 +5,13 @@ def max_vowels(s, k)
 
     vowels = "aeiou"
     string = s.chars
-    sum = 0
-    max = -Float::INFINITY
+    sum = string[0...k].count { |c| vowels.include?(c) }
+    max = sum
 
-    string.each_with_index do |c, i|
-        sum+= 1 if vowels.match?(c)
-        if i + 1 >= k 
-            if i >= k
-                sum -= 1 if vowels.match?(string[i - k])
-            end
-            max = [sum,max].max
-            return max if max == k
-        end     
+    (k...string.length).each do |i|
+        sum += 1 if vowels.include?(string[i])
+        sum -= 1 if vowels.include?(string[i - k])
+        max = [max, sum].max
     end
     max
 end
