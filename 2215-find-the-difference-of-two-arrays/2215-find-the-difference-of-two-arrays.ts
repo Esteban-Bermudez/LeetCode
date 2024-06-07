@@ -2,7 +2,7 @@ function findDifference(nums1: number[], nums2: number[]): number[][] {
     let n1 = new Set(nums1)
     let n2 = new Set(nums2)
 
-    let longestLength = nums1.length > nums2.length ? nums1.length : nums2.length
+    let longestLength = Math.max(nums1.length,nums2.length)
 
     for (let i = 0; i < longestLength; i++) {
         if ( i < nums2.length) {
