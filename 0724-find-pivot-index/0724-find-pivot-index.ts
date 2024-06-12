@@ -5,15 +5,14 @@ function pivotIndex(nums: number[]): number {
     let left = 0
 
     right -= nums[0]
-
-    if (right == 0){
+    if (right == 0) {
         return 0
     }
 
-    for (let i = 1; i <= nums.length-1; i++) {
+    for (let i = 1; i < nums.length; i++) {
         left += nums[i-1]
         right -= nums[i]
-        if(right == left){
+        if (right == left) {
             return i
         }
     }
